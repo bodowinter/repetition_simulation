@@ -35,8 +35,12 @@ for (i in 1:length(n_its)) {
 		
 		for (k in 1:length(n_reps)) {
 
-			it_ids <- gl(n_its[i], n_subs[j] * n_reps[k])
-			sub_ids <- gl(n_subs[i], n_its[i] * n_reps[k])
+			# it_ids <- rep(1:(n_its[i]), n_subs[j] * n_reps[k] * 2)
+			it_ids <- rep(rep(gl(n_its[i], 1), each = n_reps[k]), n_subs[j] * 2)
+			sub_ids <- gl(n_subs[j], n_its[i] * n_reps[k] * 2)
+			rep_ids <- rep(rep(1:(n_reps[k]), each = n_its[i] * 2), n_subs[j])
+			data.frame(sub_ids, it_ids, rep_ids)
+			
 			
 			for (n in 1:nsim) {
 				
