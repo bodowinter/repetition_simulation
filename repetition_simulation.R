@@ -39,16 +39,16 @@ for (i in 1:length(n_its)) {
 			it_ids <- rep(rep(gl(n_its[i], 1), each = n_reps[k]), n_subs[j] * 2)
 			sub_ids <- gl(n_subs[j], n_its[i] * n_reps[k] * 2)
 			rep_ids <- rep(rep(1:(n_reps[k]), each = n_its[i] * 2), n_subs[j])
-			data.frame(sub_ids, it_ids, rep_ids)
-			
-			
+			cond <- rep(rep(rep(gl(n_its[i], 1), n_its[i]), n_reps[k]), n_subs[j])
+			# data.frame(sub_ids, it_ids, rep_ids, cond)
+						
 			for (n in 1:nsim) {
 				
-				it_ints <- rnorm(n_its[i], mean = 0, sd = it_int_sd)
-				it_ints <- it_ints[it_ids]
+				it_ints <- rnorm(n_its[i], sd = it_int_sd)[it_ids]
+				sub_ints <- rnorm(n_subs[j], sd = sub_int_sd)[sub_ids]
 				
-				sub_ints <- rnorm(n_subs[j], sub_int_sd, mean = 
-				
+				y <- it_ints + sub_ints + rnorm(length(it_ids), sd = res_sd)
+				y[cond == 2] <- y[cond == 2] + IN_effect
 				
 				}
 
@@ -57,9 +57,5 @@ for (i in 1:length(n_its)) {
 	}
 
 
-for (i in 1:n_sim) {
-	
-	
-	}
 
 
