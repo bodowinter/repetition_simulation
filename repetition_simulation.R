@@ -34,12 +34,16 @@ for (i in 1:length(n_its)) {
 	for (j in 1:length(n_subs)) {
 		
 		for (k in 1:length(n_reps)) {
+
+			it_ids <- gl(n_its[i], n_subs[j] * n_reps[k])
+			sub_ids <- gl(n_subs[i], n_its[i] * n_reps[k])
 			
 			for (n in 1:nsim) {
 				
-				it_ids <- gl(n_its[i], n_subs[j] * n_reps[k])
-				sub_ids <- gl(n_sub[i], n_its[i] * n_reps[k])
+				it_ints <- rnorm(n_its[i], mean = 0, sd = it_int_sd)
+				it_ints <- it_ints[it_ids]
 				
+				sub_ints <- rnorm(n_subs[j], sub_int_sd, mean = 
 				
 				
 				}
