@@ -22,10 +22,36 @@ IN_effect <- -8.655
 
 ## Initialize parameters (N. of sub, item and repetition):
 
-n_reps <- 2 ^ (0:4)
 n_its <- 2 ^ (0:5)
 n_subs <- 6 * 2 ^ (0:3)
+n_reps <- 2 ^ (0:4)
+n_sim <- 1000
+
+## The actual loop:
+
+for (i in 1:length(n_its)) {
+	
+	for (j in 1:length(n_subs)) {
+		
+		for (k in 1:length(n_reps)) {
+			
+			for (n in 1:nsim) {
+				
+				it_ids <- gl(n_its[i], n_subs[j] * n_reps[k])
+				sub_ids <- gl(n_sub[i], n_its[i] * n_reps[k])
+				
+				
+				
+				}
+
+			}
+		}
+	}
 
 
+for (i in 1:n_sim) {
+	
+	
+	}
 
 
